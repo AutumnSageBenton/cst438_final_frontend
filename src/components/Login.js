@@ -23,13 +23,12 @@ function Login() {
                 sessionStorage.setItem("jwt", jwtToken);
                 setAuth(true);
             }
+            window.location ='/home';
         })
         .catch(err => console.log(err));
     }
 
-    if (isAuthenticated) {
-        return <Home />;
-    } else {
+
         return (
             <div className="App">
             <table>
@@ -51,6 +50,5 @@ function Login() {
             <button id="submit" onClick={login}>Login</button>
                 </div>
         );
-    }
 }
 export default Login;
