@@ -1,12 +1,14 @@
 import '../App.css';
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import styles from '../styles/Home.css';
+import { useRef } from 'react';
+
 
 
 
 function Home() {
 
-  const byNameRef = useRef();
+  const byNameRef = useRef(null);
   
   return (
     <div className="Home">
@@ -16,7 +18,7 @@ function Home() {
       <br/>
       <br/>
       Search by Name:
-      <input name='searchByName' ref={byNameRef}/>
+      <input name='searchByName' ref={byNameRef} type='text'/>
     </div>
   );
 }
