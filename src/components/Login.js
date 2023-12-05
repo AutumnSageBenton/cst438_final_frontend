@@ -24,6 +24,7 @@ function Login() {
                 setAuth(true);
             }
             window.location ='/home';
+            // history.push('/home')
         })
         .catch(err => console.log(err));
     }
