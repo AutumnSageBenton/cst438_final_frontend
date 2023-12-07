@@ -1,22 +1,29 @@
 import '../App.css';
 import {BrowserRouter, Switch, Route, Link, useHistory  } from 'react-router-dom';
-import styles from '../styles/Home.css';
-import { useRef, useState} from 'react';
-import { API_NAME_URL, API_RANDOM_URL } from '../constants';
+// import styles from '../styles/userLikes.css';
+import { useRef, useState, useEffect} from 'react';
+import { API_NAME_URL, API_RANDOM_URL, SERVER_URL } from '../constants';
 import axios from 'axios';
 
 
 
 
-function Home() {
+function userLikes() {
 
   const [SearchByNameInput, setSearchByNameInput] = useState('');
   const history = useHistory();
+
+  const token = sessionStorage.getItem("jwt");
 
   var data = 
     {
       search: ""
     };
+
+    useEffect(() => {
+      // called once after intial render
+      fetchLikes();
+     }, [] )
 
   const toComponentB=()=>{
       console.log(byNameRef.current.value);
@@ -25,26 +32,26 @@ function Home() {
       // history.push('/result', { data });
   }
 
-  const getRandomDrink= async () =>{
-    const searchResults = await axios.get(API_RANDOM_URL);
-    if (!searchResults.data.drinks){
-      window.location.href='/home';
-    } else {
-      console.log(searchResults.data.drinks); 
-      window.location.href=`/display/${searchResults.data.drinks[0].idDrink}`;
-    }
-    console.log(searchResults.data.drinks);     
+  const fetchLikes = () => {
+    console.log("fetchLikes");
+    fetch(`${SERVER_URL}/likes`,{
+      headers: {'Authorization' : token}
+    })
+    .then((response) => response.json() ) 
+    .then((data) => { 
+      console.log("likes length " + data.length);
+      // setAssignments(data);
+     }) 
+    .catch(err => console.error(err)); 
   }
 
   const byNameRef = useRef(null);
   
   return (
-    <div className="Home">
-      <h1>Home</h1>
+    <div className="userLikes">
+      <h1>User Likes</h1>
 
       <button className='profileButton' onClick={event =>  window.location.href='/profile'}> View Profile </button>
-      <button className='randomDrinkButton' onClick={getRandomDrink}> View Random Drink </button>
-      <button className='showLikesButton' onClick={event =>  window.location.href='/likes'}> View Liked Drinks </button>
       <br/>
       <br/>
       Search by Name:
@@ -60,4 +67,4 @@ function Home() {
 }
 
 
-export default Home;
+export default userLikes;

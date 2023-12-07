@@ -1,0 +1,21 @@
+
+div {
+    text-align: center;
+    margin-left: auto 0; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.leftAlign{
+    text-align: left;
+    padding-left: 40px;
+}
+
+background{
+    color: #F5F5DC;
+}

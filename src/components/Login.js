@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Home from './Home';
-import {SERVER_URL} from '../constants'
+import {SERVER_URL} from '../constants';
+import styles from '../styles/Profile.css';
 
 
 function Login() {
@@ -23,16 +24,16 @@ function Login() {
                 sessionStorage.setItem("jwt", jwtToken);
                 setAuth(true);
             }
+            window.location ='/home';
+            // history.push('/home')
         })
         .catch(err => console.log(err));
     }
 
-    if (isAuthenticated) {
-        return <Home />;
-    } else {
+
         return (
-            <div className="App">
-            <table>
+            <div className="center">
+            <table className='center'>
             <tbody>
             <tr><td>
             <label htmlFor="username">UserName</label>
@@ -51,6 +52,5 @@ function Login() {
             <button id="submit" onClick={login}>Login</button>
                 </div>
         );
-    }
 }
 export default Login;
