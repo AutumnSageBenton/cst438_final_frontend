@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Home from './Home';
-import {SERVER_URL} from '../constants'
+import {SERVER_URL} from '../constants';
+import styles from '../styles/Profile.css';
 
 
 function Login() {
@@ -31,8 +32,8 @@ function Login() {
 
 
         return (
-            <div className="App">
-            <table>
+            <div className="center">
+            <table className='center'>
             <tbody>
             <tr><td>
             <label htmlFor="username">UserName</label>

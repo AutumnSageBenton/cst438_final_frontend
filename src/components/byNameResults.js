@@ -61,6 +61,7 @@ function byNameResults(props) {
                     <div key={id}>
                       <img src={row.strDrinkThumb}/>
                       <p>{row.strDrink}</p>
+                      <button className='viewDrinkButton' onClick={event =>  window.location.href=`/display/${row.idDrink}`}>View Details </button>
                     </div>
                   ))}
       

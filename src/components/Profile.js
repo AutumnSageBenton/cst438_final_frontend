@@ -23,7 +23,7 @@ function Profile(props) {
         })
         .then((response) => response.json() ) 
         .then((data) => { 
-        console.log("profile length "+data.length);
+        console.log("profile length " + data.length);
         setUser(data);
         }) 
         .catch(err => console.error(err)); 
@@ -35,7 +35,7 @@ function Profile(props) {
   return (
     <div className="Profile">
       <h1>Profile</h1>
-
+      <button className='homeButton' onClick={event =>  window.location.href='/home'}> Home </button>
       <table className='center'>
         <thead>
             <tr>
